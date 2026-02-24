@@ -41,3 +41,15 @@ RUN git clone https://github.com/ZerBea/hcxdumptool.git && cd hcxdumptool && git
 
 RUN git clone https://github.com/hashcat/kwprocessor.git && cd kwprocessor && git checkout ${HCXKEYS_VERSION} && make
 RUN ln -s /root/kwprocessor/kwp /usr/bin/kwp
+
+
+# Add wordlists folder
+WORKDIR /root
+ADD wordlists wordlists
+ADD rules rules
+
+RUN apt-get install 7zip
+
+COPY entrypoint.sh /entrypoint.sh
+
+CMD ["/bin/bash", "/entrypoint.sh"]
