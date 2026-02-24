@@ -75,6 +75,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     clinfo \
     pciutils \
     7zip \
+    openssh-server \
     && rm -rf /var/lib/apt/lists/*
 
 RUN mkdir -p /etc/OpenCL/vendors && \
