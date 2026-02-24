@@ -31,6 +31,12 @@ To add your own wordlists to the container you need to create your own dockerhub
 
 First clone the above repo and mv/cp your wordlist(s) to the wordlists folder.
 
+Make sure the wordlists have been zipped with 7z.
+
+```
+7z a wordlist.7z wordlist.txt
+```
+
 Next build the image:
 
 ```
