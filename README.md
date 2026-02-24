@@ -6,6 +6,24 @@ Hashcat and cuda setup has been copied from https://github.com/dizcza/docker-has
 
 This repository mainly creates a wordlist and rules folder within the vast.ai instance to be able to use with hashcat.
 
+# Updating/Cloning Repo w/ submodule
+
+Clone repo
+```
+git clone --recurse-submodules <your-repo>
+```
+
+Update submodule
+```
+git submodule update --remote
+```
+
+# Setup SSH keys
+
+Edit the Hashcat Template within vast.ai and add your public key to the Environment variables section.
+
+The value name is **PUBLIC_KEY** (see entrypoint.sh)
+
 # Add custom Wordlist
 
 
@@ -33,17 +51,6 @@ Add the following:
     Expose TCP Ports - 22
 
 
-# Rule folder submodule
-
-Clone repo
-```
-git clone --recurse-submodules <your-repo>
-```
-
-Update submodule
-```
-git submodule update --remote
-```
 
 # Wordlists Tests
 
