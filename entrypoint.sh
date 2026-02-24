@@ -1,10 +1,5 @@
 #!/bin/bash
 
-# Make sure you have setup SSH keys within vast.ai for the below to work (see readme)
-echo "$PUBLIC_KEY" >> /root/.ssh/authorized_keys
-chmod 700 /root/.ssh/authorized_keys
-# service ssh start
-
 DIRECTORY="wordlists"
 
 # Loop through all .7z files in the directory
