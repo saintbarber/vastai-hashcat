@@ -76,7 +76,15 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     pciutils \
     7zip \
     openssh-server \
+    cuda-nvrtc-12-8 \
+    libpcap0.8 \
+    libcurl4 \
     && rm -rf /var/lib/apt/lists/*
+
+# hashcat dlopens "libnvrtc.so" (unversioned), but cuda-nvrtc-12-8 only ships
+# libnvrtc.so.12. Symlink into the default loader search path so hashcat uses
+# the CUDA backend instead of falling back to OpenCL.
+RUN ln -sf /usr/local/cuda/lib64/libnvrtc.so.12 /usr/lib/x86_64-linux-gnu/libnvrtc.so
 
 RUN mkdir -p /etc/OpenCL/vendors && \
     echo "libnvidia-opencl.so.1" > /etc/OpenCL/vendors/nvidia.icd

@@ -20,9 +20,9 @@ git submodule update --remote
 
 # Setup SSH keys
 
-Edit the Hashcat Template within vast.ai and add your public key to the Environment variables section.
+Go to Account > Keys and add your public key.
 
-The value name is **PUBLIC_KEY** (see entrypoint.sh)
+Now we can use our private key to SSH into the vast.ai instance.
 
 # Add custom Wordlist
 
