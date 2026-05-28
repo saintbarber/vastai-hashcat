@@ -101,6 +101,7 @@ WORKDIR /root
 ADD wordlists wordlists
 ADD rules rules
 
-COPY entrypoint.sh /entrypoint.sh
+# Prevent vast from trying to auto-start tmux when starting ssh
+ADD .no_auto_tmux .no_auto_tmux 
 
-CMD ["/bin/bash", "/entrypoint.sh"]
+COPY entrypoint.sh /entrypoint.sh
