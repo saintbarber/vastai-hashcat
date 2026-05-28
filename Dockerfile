@@ -103,5 +103,3 @@ ADD rules rules
 
 # Prevent vast from trying to auto-start tmux when starting ssh
 ADD .no_auto_tmux .no_auto_tmux 
-
-COPY entrypoint.sh /entrypoint.sh
