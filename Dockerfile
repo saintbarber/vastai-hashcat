@@ -59,6 +59,9 @@ RUN git clone https://github.com/hashcat/kwprocessor.git && \
     git checkout ${HCXKEYS_VERSION} && \
     make
 
+#---- pack ----
+RUN git clone https://github.com/Hydraze/pack.git
+
 
 ############################
 # Stage 2 — Runtime (SMALL)
@@ -79,6 +82,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     cuda-nvrtc-12-8 \
     libpcap0.8 \
     libcurl4 \
+    nano \
+    wget \
+    vim \
+    python3 \
     && rm -rf /var/lib/apt/lists/*
 
 # hashcat dlopens "libnvrtc.so" (unversioned), but cuda-nvrtc-12-8 only ships
@@ -95,8 +102,9 @@ COPY --from=builder /opt/hcxtools/ /
 COPY --from=builder /opt/hcxdumptool/ /
 COPY --from=builder /build/hashcat-utils/src/cap2hccapx.bin /usr/bin/cap2hccapx
 COPY --from=builder /build/kwprocessor/kwp /usr/bin/kwp
-
+COPY --from=builder /build/pack /root/pack
 WORKDIR /root
+
 
 ADD wordlists wordlists
 ADD rules rules
